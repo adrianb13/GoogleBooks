@@ -1,0 +1,32 @@
+.container {
+  width: 95%;
+  margin: 2%;
+  border: 1px solid black;
+  background: teal;
+}
+.itemContainer {
+  width: 95%;
+  margin: 20px;
+  padding: 5px 10px 5px 10px;
+  border: 1px solid black;
+  background: white;
+}
+.title {
+  font-size: 120%;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.author {
+  font-weight: bold;
+}
+.description {
+  text-align: justified;
+  font-style: italic;
+  margin: 5px 10px 5px 10px;
+}
+.bookLink {
+  margin-left: 3px;
+}
+.saveBook {
+  margin: 10px 5px 5px 5px;
+}

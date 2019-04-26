@@ -1,0 +1,17 @@
+.navbar {
+  padding: 20px 20px 23px 20px;
+  border-bottom: 1px solid black;
+  background: teal;
+}
+.float {
+  float: left;
+  font-size: 110%;
+  font-weight: bold;
+}
+.link {
+  color: lightgray;
+  margin-left: 20px;
+}
+a:link, a:visited, a:focus, a:hover, a:active {
+  text-decoration: none;
+}

@@ -1,0 +1,14 @@
+.headerContainer {
+  background: teal;
+  text-align: center;
+  width: 95%;
+  margin: 30px 2% 30px 2%;
+  border: 1px solid black;
+}
+.header{
+  margin: 20px auto 5px auto;
+}
+.subHeader {
+  font-style: italic;
+  margin: 0px auto 20px auto;
+}
