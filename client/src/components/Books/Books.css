@@ -19,12 +19,18 @@
 .author {
   font-weight: bold;
 }
+.bookPic {
+  float: left;
+  margin: 10px 10px 10px 0px;
+
+  width: 100px;
+}
 .description {
-  text-align: justified;
   font-style: italic;
-  margin: 5px 10px 5px 10px;
+  margin: 5px 20px 5px 20px;
 }
 .bookLink {
+  font-weight: bold;
   margin-left: 3px;
 }
 .saveBook {
