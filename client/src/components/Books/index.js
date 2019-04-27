@@ -9,7 +9,7 @@ import Saved from "../Saved";
 class Books extends React.Component {
   state = {
     query: "",
-    id: "",
+    bookId: "",
     title: "",
     author: "",
     description: "",
@@ -39,7 +39,7 @@ class Books extends React.Component {
     let bookList = [];
       return result.slice(0, 5).map(book => {
         let currBook = {
-          id: book.volumeInfo.industryIdentifiers[0].identifier,
+          bookId: book.volumeInfo.industryIdentifiers[0].identifier,
           title: book.volumeInfo.title,
           author: book.volumeInfo.authors,
           description: book.volumeInfo.description,
@@ -47,13 +47,11 @@ class Books extends React.Component {
           link: book.volumeInfo.canonicalVolumeLink
         }
         bookList.push(currBook);
-        console.log(currBook);
-        console.log(bookList)
+
         return (
           <div
             className="itemContainer" 
-            key={currBook.id}
-            onClick={this.handleInputChange}
+            key={currBook.bookId}
             >
             <div className="title" >Title: {currBook.title}</div>
             <div className="author" >Author(s): {currBook.author}</div>
@@ -78,7 +76,7 @@ class Books extends React.Component {
               className="saveBook" 
               type="submit" 
               onClick={() => this.handleSavedToList(currBook)}
-              id={currBook.id}
+              id={currBook.bookId}
               info={currBook}
             >Save To List</button>
           </div>
@@ -103,13 +101,18 @@ class Books extends React.Component {
     })
   }
 
-  handleSavedToList = event => {
-    const info = event.target.info;
+  handleSavedToList = bookInfo => {
     this.setState({
-      save: info
+      bookId: bookInfo.bookId,
+      title: bookInfo.title,
+      author: bookInfo.author,
+      description: bookInfo.description,
+      image: bookInfo.image,
+      link: bookInfo.link
     })
-/*     API.saveBook({
-      id: this.state.id,
+
+    API.saveBook({
+      bookId: this.state.bookId,
       title: this.state.title,
       author: this.state.author,
       description: this.state.description,
@@ -117,9 +120,13 @@ class Books extends React.Component {
       link: this.state.link
     })
     .then(res => console.log(res))
-    .catch(err => console.log(err)); */
-    console.log("-----------------")
-    console.log(this.state.save)
+    .catch(err => console.log(err));
+  }
+
+  getSavedList = () => {
+    API.getBooks() 
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
   }
 
   render() {
@@ -141,6 +148,7 @@ class Books extends React.Component {
               searchBooks={this.searchBooks}
               handleInputChange={this.handleInputChange}
               arrayResult={this.arrayResult} 
+              handleSavedToList={this.handleSavedToList}
             />
           )}
         </div>
