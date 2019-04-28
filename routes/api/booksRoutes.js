@@ -12,8 +12,8 @@ router
 // Matches with "/api/books/:id"
 router
   .route("/:id")
-  .delete(booksController.remove);
-/*   .get(booksController.findById)
-  .put(booksController.update) */
+  .delete(booksController.remove)
+//  .get(booksController.findById)
+//  .put(booksController.update);
 
 module.exports = router;

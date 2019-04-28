@@ -17,17 +17,16 @@ module.exports = {
   },
   remove: function(req, res) {
     db.Books
-      .findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
+      .remove({ _id: req.params._id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }
 /*   findById: function(req, res) {
     db.Books
-      .findById(req.params.id)
+      .findById({_id: req.params._id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  }, */
+  } */
 /*   update: function(req, res) {
     db.Books
       .findOneAndUpdate({ _id: req.params.id }, req.body)

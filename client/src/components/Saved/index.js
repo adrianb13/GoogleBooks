@@ -7,7 +7,7 @@ function Saved(props) {
     <div className="container">
       <h3 className="boxHeader">Saved Books</h3>
       <div> {props.savedBooks.map(book => (
-        <div className="itemContainer" key={book.bookId}>
+        <div className="itemContainer" key={book._id}>
           <div className="title" >Title: {book.title}</div>
           <div className="author" >Author(s): {book.author}</div>
           <img 
@@ -27,13 +27,13 @@ function Saved(props) {
             >View
             </a>
           </div>
-{/*             <button 
+            <button 
               className="saveBook" 
               type="submit" 
-              onClick={() => this.handleSavedToList(book)}
+              onClick={() => props.handleDelete(book)}
+              key={book._id}
               id={book.bookId}
-              info={book}
-            >Save To List</button> */}
+            >Delete</button> 
         </div>
         ))
       }

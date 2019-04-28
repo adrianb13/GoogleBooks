@@ -105,18 +105,27 @@ class Books extends React.Component {
       image: bookInfo.image,
       link: bookInfo.link 
     })
-    .then(res => console.log(res))
+    .then(res => this.getSavedList())
     .catch(err => console.log(err));
   }
 
   getSavedList = () => {
     API.getBooks() 
     .then(res => {
-      console.log("---" + res + "---")
       this.setState({ 
       savedBooks: res.data
       })
       console.log(this.state.savedBooks)
+    })
+    .catch(err => console.log(err));
+  }
+
+  handleDelete = book => {
+    console.log(book)
+    API.deleteBook(book._id)
+    .then(res => {
+      console.log(res.data)
+      this.getSavedList()
     })
     .catch(err => console.log(err));
   }
@@ -134,7 +143,8 @@ class Books extends React.Component {
           {this.state.savedList ? (
             <Saved 
               savedBooks={this.state.savedBooks}
-              getSavedList={this.getSavedList}/>
+              getSavedList={this.getSavedList}
+              handleDelete={this.handleDelete}/>
           ) : (
             <Search
               name="query"
