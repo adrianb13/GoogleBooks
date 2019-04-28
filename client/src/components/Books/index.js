@@ -9,21 +9,16 @@ import Saved from "../Saved";
 class Books extends React.Component {
   state = {
     query: "",
-    bookId: "",
-    title: "",
-    author: "",
-    description: "",
-    image: "",
-    link: "",
     savedList: false,
     result: [],
-    save: {}
+    savedBooks: []
   };
 
   componentDidMount() {
-    this.searchBooks(this.state.query);
+//    this.searchBooks(this.state.query);
+    this.getSavedList()
   }
-
+ 
   searchBooks = query => {
     API.search(this.state.query)
       .then(res => {
@@ -102,22 +97,13 @@ class Books extends React.Component {
   }
 
   handleSavedToList = bookInfo => {
-    this.setState({
+    API.saveBook({
       bookId: bookInfo.bookId,
       title: bookInfo.title,
       author: bookInfo.author,
       description: bookInfo.description,
       image: bookInfo.image,
-      link: bookInfo.link
-    })
-
-    API.saveBook({
-      bookId: this.state.bookId,
-      title: this.state.title,
-      author: this.state.author,
-      description: this.state.description,
-      image: this.state.image,
-      link: this.state.link
+      link: bookInfo.link 
     })
     .then(res => console.log(res))
     .catch(err => console.log(err));
@@ -125,7 +111,13 @@ class Books extends React.Component {
 
   getSavedList = () => {
     API.getBooks() 
-    .then(res => console.log(res))
+    .then(res => {
+      console.log("---" + res + "---")
+      this.setState({ 
+      savedBooks: res.data
+      })
+      console.log(this.state.savedBooks)
+    })
     .catch(err => console.log(err));
   }
 
@@ -140,7 +132,9 @@ class Books extends React.Component {
         <Header />
         <div>
           {this.state.savedList ? (
-            <Saved />
+            <Saved 
+              savedBooks={this.state.savedBooks}
+              getSavedList={this.getSavedList}/>
           ) : (
             <Search
               name="query"

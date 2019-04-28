@@ -4,14 +4,15 @@ const Schema = mongoose.Schema;
 const bookSchema = new Schema({
   bookId: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   title: { 
     type: String, 
     required: true 
   },
   author: { 
-    type: String, 
+    type: Array, 
     required: true 
   },
   description: { 
@@ -28,7 +29,7 @@ const bookSchema = new Schema({
   },
   date: { 
     type: Date, 
-    default: Date.now 
+    default: Date.now
   }
 });
 
