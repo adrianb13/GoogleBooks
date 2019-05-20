@@ -121,9 +121,10 @@ class Books extends React.Component {
   }
 
   handleDelete = book => {
-    console.log(book)
+    console.log("_id:" +book._id)
     API.deleteBook(book._id)
     .then(res => {
+      console.log(res)
       console.log(res.data)
       this.getSavedList()
     })
