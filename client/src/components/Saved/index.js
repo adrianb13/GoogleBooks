@@ -27,13 +27,13 @@ function Saved(props) {
             >View
             </a>
           </div>
-            <button 
-              className="saveBook" 
-              type="submit" 
-              onClick={() => props.handleDelete(book)}
-              key={book._id}
-              id={book.bookId}
-            >Delete</button> 
+//            <button 
+//              className="saveBook" 
+//              type="submit" 
+//              onClick={() => props.handleDelete(book)}
+//              key={book._id}
+//              id={book.bookId}
+//            >Delete</button> 
         </div>
         ))
       }
