@@ -5,7 +5,7 @@ class Search extends React.Component {
   render() {
     return (
       <div>
-        <div className="container">
+        <div className="container2">
           <div className="searchHead">Book Search</div>
           <input className="search" name="query" onChange={this.props.handleInputChange}></input>
           <button className="searchButton" name="bookSearch" onClick={this.props.searchBooks}>Search</button>

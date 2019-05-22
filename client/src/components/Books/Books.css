@@ -1,8 +1,20 @@
+.background {
+  background: lightgray;
+  min-height: -webkit-fill-available;
+}
 .container {
   width: 95%;
   margin: 2%;
   border: 1px solid black;
   background: teal;
+  box-shadow: 5px 5px gray;
+}
+.container2 {
+  width: 50%;
+  margin: 2% auto 2% auto;
+  border: 1px solid black;
+  background: teal;
+  box-shadow: 5px 5px gray;
 }
 .itemContainer {
   width: 95%;

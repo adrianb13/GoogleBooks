@@ -121,10 +121,9 @@ class Books extends React.Component {
   }
 
   handleDelete = book => {
-    console.log("_id:" +book._id)
+    console.log(book._id)
     API.deleteBook(book._id)
     .then(res => {
-      console.log(res)
       console.log(res.data)
       this.getSavedList()
     })
@@ -133,7 +132,7 @@ class Books extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="background">
         <NavBar
           handleSearchButton={this.handleSearchButton}
           handleSavedButton={this.handleSavedButton}
